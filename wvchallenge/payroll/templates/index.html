@@ -1,0 +1,111 @@
+<!doctype html>
+<!--[if lte IE 9]>
+<html lang="en" class="oldie">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token" content="xrecjDEWMtXfCUXX3j7yAbqk5hVEvhtRngf39wJqpPYvAjZZzq4OD4EfF48oTFdKgKCmzES4CMxkvQOAe3kvBg==" />
+
+
+
+
+    <!--
+Copyright (c) 2017 by Sergey Kupletsky (http://codepen.io/zavoloklom/pen/IGkDz)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+
+  <title>CodePen - Material Design - Responsive Table</title>
+
+  <link rel="stylesheet" media="screen" href="https://production-assets.codepen.io/assets/fullpage/fullpage-37069547f2d1d97c3315524a913fc02636bcec294dc101648785fd806d4a383e.css" />
+
+  <link href='//fonts.googleapis.com/css?family=Lato:400,900,400italic,700italic' rel='stylesheet'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+
+    <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CodePen">
+  <meta name="twitter:title" content="Material Design - Responsive Table">
+  <meta name="twitter:description" content="Based on:  Material Design by Google (http://www.google.com/design/)  Tested on Win8.1 with browsers: Chrome 37, Firefox 32, Opera 25, IE 11, Safari 5....">
+  <meta name="twitter:image" content="http://s3-us-west-2.amazonaws.com/i.cdpn.io/53474.IGkDz.48403022-fecd-462c-8178-c02782e5f1c6.png">
+    <meta name="twitter:creator" content="@zavoloklom">
+
+  <meta property="og:image" content="http://codepen.io/zavoloklom/pen/IGkDz/image/large.png" itemprop="thumbnailUrl">
+  <meta property="og:title" content="Material Design - Responsive Table">
+  <meta property="og:url" content="https://codepen.io/zavoloklom/details/IGkDz">
+  <meta property="og:site_name" content="CodePen">
+  <meta property="og:description" content="Based on:  Material Design by Google (http://www.google.com/design/)  Tested on Win8.1 with browsers: Chrome 37, Firefox 32, Opera 25, IE 11, Safari 5....">
+
+  <link rel="alternate" type="application/json+oembed"
+  href="https://codepen.io/api/oembed?url=https://codepen.io/zavoloklom/pen/IGkDz&format=json"
+  title="Material Design - Responsive Table" />
+
+  <script async src="//www.google-analytics.com/analytics.js"></script>
+
+</head>
+
+<body class="fullpage logged-out">
+
+<div class="container" style="margin-top: 100px;">
+
+<form class="form-inline" enctype="multipart/form-data" action="{% url 'payroll:traverse' %}" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="file">Select file</label>
+    <input id="file" type="file" name="file" value="Upload" style="display: inline-block;" />
+  </div>
+  <input class="btn btn-primary" type="submit" value="Submit" style="padding: 10px 30px;" />
+</form>
+
+<div id="demo">
+  <h2>Payroll</h2>
+  <!-- Responsive table starts here -->
+  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+  <div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue table-striped">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Pay Period</th>
+          <th>Amount Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for emp in employee_list %}
+        <tr>
+          <td data-title="Employee ID">{{ emp.employee_id }}</td>
+          <td data-title="Pay Period">{{ emp.pay_period }}</td>
+          <td data-title="Amount Paid">{{ emp.amount_paid }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</div>
+<script src="https://production-assets.codepen.io/assets/editor/full/full_page_renderer-c00eb7b77ad7358fd5c575e853215c03db432330e6991a14ff471d01926a4976.js"></script>
+<script type="text/javascript">
+  $('.form-inline').submit(function(e) {
+    if (!$('#file').val()) {
+       e.preventDefault();
+       alert('No file uploaded.');
+    }
+  });
+</script>
+</body>
+
+</html>
