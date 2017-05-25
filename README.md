@@ -3,24 +3,29 @@
  The project is built using Python 2.7 and Django 1.11.1.
 
  We will start off by installing pip to configure our packages. Run the following command in your terminal.
+'''
 	$ easy_install pip
-
+'''
  Go to the project directory /se-challenge-payroll and run the following command to setup a virtual environment.
+'''
 	$ pip install virtualenv
 	$ virtualenv env
 	$ source env/bin/activate
-
+'''
  Now that the virtual environment is activated, installed django to use the app
+'''
 	$ pip install django==1.11.1
-	
+'''	
  Create your database tables and set up a superuser:
+'''
 	$ cd wvchallenge
 	$ python manage.py syncdb
 	$ python manage.py migrate
-	
+'''	
  Launch the development server (this will setup the server on port 8080. You can change it to another port e.g 8000)
+'''
 	$ python manage.py runserver 8080
-
+'''
  Point your browser at http://127.0.0.1:8080 and you should see the new app
 
  The app however very basic, but utilizes the core aspects of MVC architecture. I have written models which store the information for the employee, along with a controller which traverses the CSV file and stores data in the database (sqlite). The views render the data and utilize the bootstrap template. The upload button also uses a line of jQuery to check if an empty form is submitted or not.
